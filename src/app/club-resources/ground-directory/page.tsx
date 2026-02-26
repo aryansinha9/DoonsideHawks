@@ -23,7 +23,7 @@ export default function GroundDirectoryPage() {
                 <div className="container">
                     <span className="section-label">Competition Venues</span>
                     <h2 className="section-heading">All Grounds</h2>
-                    <p className="section-intro" style={{ marginBottom: 'var(--space-5)' }}>A guide to all venues used by the Hawks and our competition this season. Tap "Get Directions" to open in Maps.</p>
+                    <p className="section-intro" style={{ marginBottom: 'var(--space-5)' }}>A guide to all venues used by the Hawks and our competition this season. Tap &quot;Get Directions&quot; to open in Maps.</p>
                     <div className={styles.groundsGrid}>
                         {grounds.map(g => (
                             <div key={g.id} className={styles.groundCard}>

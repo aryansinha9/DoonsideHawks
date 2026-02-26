@@ -53,8 +53,8 @@ export default function CoachesCornerPage() {
                 </div>
                 <div className="hero-overlay" />
                 <div className="hero-content">
-                    <p className="breadcrumb"><Link href="/">Home</Link><span className="breadcrumb-sep">›</span><span>Coach & Manager's Corner</span></p>
-                    <h1 className={`display ${styles.heroTitle}`}>Coach & Manager's Corner</h1>
+                    <p className="breadcrumb"><Link href="/">Home</Link><span className="breadcrumb-sep">›</span><span>Coach & Manager&apos;s Corner</span></p>
+                    <h1 className={`display ${styles.heroTitle}`}>Coach & Manager&apos;s Corner</h1>
                     <p className={styles.heroSub}>Everything you need to prepare, train, and lead your team.</p>
                 </div>
             </section>

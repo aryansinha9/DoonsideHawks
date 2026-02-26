@@ -41,6 +41,7 @@ export async function sendContactEmail(data: ContactFormData): Promise<ActionRes
         await resend.emails.send({
             from: fromEmail,
             to: toEmail,
+            // @ts-ignore — Resend SDK type varies between versions
             replyTo: data.email,
             subject: `[Hawks Website] ${data.subject} — from ${data.name}`,
             html: `

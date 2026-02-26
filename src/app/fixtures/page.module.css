@@ -1,0 +1,254 @@
+.hero {
+    min-height: 50vh;
+}
+
+.heroTitle {
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.heroSub {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 8px;
+}
+
+.fixtureTable {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    margin-bottom: var(--space-5);
+}
+
+.tableHead {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1.5fr 2fr 0.6fr;
+    background: var(--color-crimson);
+    color: white;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 14px 20px;
+    gap: 12px;
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1.5fr 2fr 0.6fr;
+    padding: 16px 20px;
+    gap: 12px;
+    border-bottom: 1px solid var(--color-border);
+    align-items: center;
+    background: var(--color-white);
+    transition: background var(--transition-fast);
+}
+
+.tableRow:last-child {
+    border-bottom: none;
+}
+
+.tableRow:hover {
+    background: var(--color-warm-fog);
+}
+
+.dateCell {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.dateText {
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--color-crimson);
+}
+
+.timeText {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.matchCell {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.teamName {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.vsLabel {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.compCell {
+    font-size: 13px;
+    color: var(--color-text-muted);
+}
+
+.venueCell {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.haCell {}
+
+.badge {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.home {
+    background: rgba(139, 0, 0, 0.1);
+    color: var(--color-crimson);
+}
+
+.away {
+    background: rgba(44, 44, 44, 0.1);
+    color: var(--color-charcoal);
+}
+
+.externalCTA {
+    background: var(--color-warm-fog);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.externalCTA p {
+    font-size: 15px;
+    color: var(--color-charcoal);
+    max-width: 500px;
+}
+
+.mapGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    align-items: start;
+    margin-top: var(--space-5);
+}
+
+.mapContainer {
+    height: 420px;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.groundInfo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.groundName {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--color-charcoal);
+}
+
+.groundDetail {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--color-text-muted);
+}
+
+.groundIcon {
+    color: var(--color-crimson);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.groundFacilities h4,
+.groundParking h4 {
+    font-family: var(--font-display);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-charcoal);
+    margin-bottom: 8px;
+}
+
+.facilityTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.facilityTag {
+    font-size: 12px;
+    padding: 4px 10px;
+    background: rgba(139, 0, 0, 0.08);
+    color: var(--color-crimson);
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.groundParking p {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+
+    .tableHead,
+    .tableRow {
+        grid-template-columns: 1fr 1.5fr 1fr;
+    }
+
+    .tableHead span:nth-child(4),
+    .tableRow .venueCell,
+    .tableHead span:nth-child(3),
+    .tableRow .compCell {
+        display: none;
+    }
+
+    .mapGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .tableHead,
+    .tableRow {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .tableHead span:last-child,
+    .tableRow .haCell {
+        display: none;
+    }
+}

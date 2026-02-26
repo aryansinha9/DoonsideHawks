@@ -1,0 +1,106 @@
+.hero {
+    min-height: 50vh;
+}
+
+.heroTitle {
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.heroSub {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 8px;
+}
+
+.groundsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+}
+
+.groundCard {
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    border-top: 3px solid var(--color-crimson);
+}
+
+.groundHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.groundName {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-charcoal);
+}
+
+.groundSuburb {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    color: var(--color-crimson);
+    padding: 3px 8px;
+    background: rgba(139, 0, 0, 0.08);
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.groundAddress {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--color-text-muted);
+}
+
+.groundFacilities h4,
+.groundParking h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-charcoal);
+    margin-bottom: 8px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tag {
+    font-size: 11px;
+    padding: 3px 8px;
+    background: rgba(139, 0, 0, 0.07);
+    color: var(--color-crimson);
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.groundParking p {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .groundsGrid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,32 @@
+.reveal {
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: none !important;
+}
+
+/* Variants — initial states */
+.fadeUp {
+    transform: translateY(24px);
+}
+
+.fadeLeft {
+    transform: translateX(-16px);
+}
+
+.scaleIn {
+    transform: scale(0.97);
+    transition-duration: 0.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}

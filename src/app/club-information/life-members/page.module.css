@@ -1,0 +1,91 @@
+.hero {
+    min-height: 50vh;
+}
+
+.heroTitle {
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.heroSub {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 8px;
+}
+
+.intro {
+    margin-bottom: var(--space-6);
+}
+
+.membersGrid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.memberCard {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-5);
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: var(--shadow-card);
+    border-left: 4px solid var(--color-magenta);
+    align-items: flex-start;
+}
+
+.memberAvatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-crimson), var(--color-crimson-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.avatarInitial {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 28px;
+    color: var(--color-white);
+}
+
+.memberInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.memberYear {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-magenta);
+    font-weight: 600;
+}
+
+.memberName {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--color-charcoal);
+}
+
+.memberBio {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+    .memberCard {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+}

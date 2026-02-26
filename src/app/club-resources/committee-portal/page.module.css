@@ -1,0 +1,118 @@
+.hero {
+    min-height: 50vh;
+}
+
+.heroTitle {
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.heroSub {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 8px;
+}
+
+.loginBox {
+    max-width: 540px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.loginIcon {
+    width: 72px;
+    height: 72px;
+    background: rgba(139, 0, 0, 0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-crimson);
+    margin: 0 auto var(--space-4);
+}
+
+.loginForm {
+    text-align: left;
+}
+
+.pwField {
+    position: relative;
+}
+
+.pwField .form-input {
+    padding-right: 44px;
+}
+
+.showPw {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+}
+
+.contactNote {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-top: var(--space-3);
+}
+
+.contactLink {
+    color: var(--color-crimson);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.welcomeBanner {
+    background: rgba(139, 0, 0, 0.08);
+    border: 1px solid rgba(139, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: var(--color-crimson);
+    margin-bottom: var(--space-5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.docList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.docRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: 14px 16px;
+    border-radius: 8px;
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow var(--transition-fast);
+}
+
+.docRow:hover {
+    box-shadow: var(--shadow-card-hover);
+}
+
+.docTitle {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-charcoal);
+}
+
+.docMeta {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-top: 3px;
+}

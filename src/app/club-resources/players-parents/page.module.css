@@ -1,0 +1,51 @@
+.hero {
+    min-height: 50vh;
+}
+
+.heroTitle {
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.heroSub {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 8px;
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-3);
+}
+
+.infoCard {
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: var(--shadow-card);
+    border-top: 3px solid var(--color-crimson);
+}
+
+.infoTitle {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-charcoal);
+    margin-bottom: var(--space-3);
+}
+
+.infoCard p {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+}
+
+@media (max-width: 768px) {
+    .infoGrid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,174 @@
+.hero {
+    min-height: 280px;
+}
+
+.heroTitle {
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.heroSub {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 8px;
+}
+
+.intro {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-6);
+    max-width: 900px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 4-Column Board Grid */
+.boardContainer {
+    width: 100%;
+    margin-top: var(--space-6);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 1200px) {
+    .boardContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .boardContainer {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Column Styling */
+.boardCol {
+    background: var(--color-surface-lowest);
+    border: 1px solid var(--color-outline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.colHeader {
+    display: grid;
+    grid-template-columns: 32px 1fr 48px 48px;
+    gap: 8px;
+    padding: 12px;
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.boardRow {
+    display: grid;
+    grid-template-columns: 32px 1fr 48px 48px;
+    gap: 8px;
+    padding: 10px 12px;
+    align-items: center;
+    border-bottom: 1px solid var(--color-outline-variant);
+    font-size: 13px;
+    color: var(--color-charcoal);
+}
+
+.boardRow:nth-child(even) {
+    background: var(--color-surface);
+}
+
+.boardRow:last-child {
+    border-bottom: none;
+}
+
+/* Cells */
+.cellId {
+    font-weight: 700;
+    color: var(--color-on-surface);
+    opacity: 0.6;
+}
+
+.cellName {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cellYear {
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+.cellType {
+    display: flex;
+    justify-content: center;
+}
+
+.badgeS, .badge15 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 11px;
+    color: var(--color-white);
+}
+
+.badgeS {
+    background: var(--color-primary);
+}
+
+.badge15 {
+    background: #1b6d24; /* Distinct green for 15 year player */
+}
+
+/* Legend */
+.legend {
+    margin-top: var(--space-6);
+    background: var(--color-surface-highest);
+    padding: var(--space-5);
+    border-radius: var(--radius-card);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px dashed var(--color-outline);
+}
+
+.legendTitle {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--color-outline);
+    padding-bottom: 8px;
+}
+
+.legendRow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--color-charcoal);
+}
+
+.asterisk {
+    color: var(--color-primary);
+    font-weight: 900;
+    font-size: 16px;
+}

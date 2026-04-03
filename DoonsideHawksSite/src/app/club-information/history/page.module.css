@@ -1,0 +1,185 @@
+.hero {
+    min-height: 280px;
+}
+
+.heroTitle {
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.heroSub {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 8px;
+}
+
+.intro {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+    max-width: 720px;
+}
+
+/* History Content Containers */
+.historyBlock {
+    margin-bottom: var(--space-6);
+}
+
+.historyBlock h3 {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.historyBlock p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-charcoal);
+    margin-bottom: 16px;
+}
+
+.splitGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+    margin: var(--space-6) 0;
+}
+
+@media (max-width: 768px) {
+    .splitGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.historyCard {
+    background: var(--color-surface-lowest);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+    border-top: 4px solid var(--color-primary);
+}
+
+.historyCard h4 {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    font-size: 18px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--color-outline);
+    padding-bottom: 8px;
+}
+
+.listRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: var(--color-charcoal);
+}
+
+.listRole {
+    font-weight: 700;
+    color: var(--color-secondary-text);
+}
+
+.listName {
+    font-weight: 600;
+}
+
+.rosterGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.ageGroup h4 {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    font-size: 16px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--color-outline);
+    padding-bottom: 4px;
+}
+
+.ageGroup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ageGroup li {
+    font-size: 14px;
+    color: var(--color-charcoal);
+    margin-bottom: 4px;
+}
+
+.alumniCard {
+    background: var(--color-surface);
+    border-left: 4px solid var(--color-primary);
+    padding: 24px;
+    margin-top: var(--space-6);
+    border-radius: 0 var(--radius-card) var(--radius-card) 0;
+}
+
+.alumniCard h3 {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    font-size: 22px;
+    margin-bottom: 16px;
+}
+
+.alumniEntry {
+    margin-bottom: 24px;
+}
+
+.alumniEntry:last-child {
+    margin-bottom: 0;
+}
+
+.alumniLink {
+    color: var(--color-primary);
+    font-weight: 800;
+    text-decoration: underline;
+    font-size: 18px;
+    transition: color 0.2s ease;
+}
+
+.alumniLink:hover {
+    color: var(--color-secondary-text);
+}
+
+.alumniDesc {
+    font-size: 15px;
+    color: var(--color-charcoal);
+    margin-top: 8px;
+    line-height: 1.6;
+}
+
+.closingStatement {
+    text-align: center;
+    padding: var(--space-7) 0 var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.closingTagline {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 32px;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.closingStatement p {
+    font-size: 18px;
+    color: var(--color-text-muted);
+}

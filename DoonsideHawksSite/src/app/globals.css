@@ -1,0 +1,357 @@
+/* ===========================
+   DESIGN TOKENS
+=========================== */
+:root {
+  /* Brand Colours — Doonside Hawks 2026 */
+  --color-primary: #410006;
+  --color-primary-container: #630e15;
+  --color-surface: #fcf9f8;
+  --color-surface-low: #f6f3f2;
+  --color-surface-container: #f0eded;
+  --color-surface-lowest: #ffffff;
+  --color-secondary-text: #5d5f5f;
+  --color-outline: #dcc0be;
+  --color-on-primary: #ffffff;
+
+  /* Typography variables provided by layout.tsx from next/font/google */
+  /* --font-display: Plus Jakarta Sans; --font-body: Manrope; */
+
+  /* Type Scale */
+  --text-hero: clamp(48px, 7vw, 88px);
+  --text-h1: clamp(36px, 5vw, 60px);
+  --text-h2: clamp(28px, 3.5vw, 42px);
+  --text-h3: clamp(20px, 2.5vw, 26px);
+  --text-body: 17px;
+  --text-sm: 14px;
+  --text-xs: 12px;
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --space-7: 96px;
+  --space-8: 128px;
+
+  /* Layout */
+  --max-width: 1280px;
+  --nav-height: 80px;
+
+  /* Effects */
+  --radius-card: 8px; /* rounded-xl */
+  --radius-btn: 4px; /* rounded-md */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08); /* Minimal */
+  --shadow-card-hover: 0 8px 32px rgba(65, 0, 6, 0.1); 
+  --shadow-nav: 0 2px 20px rgba(0, 0, 0, 0.05);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease; /* 500ms as requested */
+}
+
+/* ===========================
+   RESET & BASE
+=========================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.7;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===========================
+   GLOBAL GEOMETRIC BACKGROUND
+=========================== */
+.site-bg-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 1;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* ===========================
+   LAYOUT UTILITIES
+=========================== */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.section {
+  padding: var(--space-7) 0; /* py-24 (96px) */
+  background: var(--color-surface);
+}
+
+.section--fog {
+  background: var(--color-surface-low);
+}
+
+.section--primary {
+  background: var(--color-primary);
+}
+
+/* ===========================
+   TYPOGRAPHY UTILITIES
+=========================== */
+.heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 16px 32px; /* px-8 py-4 */
+  border-radius: var(--radius-btn); /* 4px */
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em; /* tracking-widest */
+  transition: all var(--transition-base);
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-container);
+  border-color: var(--color-primary-container);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: rgba(220, 192, 190, 0.4); /* subtle warm border */
+}
+
+.btn-ghost:hover {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  transform: translateY(-2px);
+}
+
+.btn-small-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px 16px; /* px-4 py-2 */
+  border-radius: var(--radius-btn);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all var(--transition-base);
+  cursor: pointer;
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid rgba(220, 192, 190, 0.4);
+}
+
+.btn-small-ghost:hover {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+/* Buttons from old code used in NavBar or Hero that might need keeping */
+.btn-pink, .btn-magenta { 
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 16px 32px;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all var(--transition-base);
+}
+.btn-pink:hover, .btn-magenta:hover {
+  background: var(--color-primary-container);
+  border-color: var(--color-primary-container);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   SECTION LABEL STYLE
+=========================== */
+.section-label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em; /* tracking-[0.2em] */
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+  display: block;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-h2);
+  color: var(--color-primary);
+  line-height: 1.15;
+  margin-bottom: var(--space-5);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+/* ===========================
+   GRID UTILITIES
+=========================== */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .section {
+    padding: var(--space-6) 0;
+  }
+
+  .grid-4,
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===========================
+   HERO SHARED (Keeping for backwards compatibility with page.tsx Hero)
+=========================== */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--color-primary);
+}
+
+.hero-full {
+  min-height: 100vh;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 var(--space-3);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-half {
+  min-height: 280px;
+  padding: var(--space-7) 0 var(--space-5);
+  background: var(--color-primary);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -1,0 +1,404 @@
+.container {
+    padding: var(--space-4);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: var(--space-6);
+    }
+}
+
+.mapNav {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    padding: 12px 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.navBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.navBtnActive {
+    color: var(--color-primary);
+}
+
+.navBtnInactive {
+    color: rgba(26, 28, 28, 0.4);
+}
+
+.navBtnInactive:hover {
+    color: rgba(26, 28, 28, 0.7);
+}
+
+.navLabel {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: var(--font-display);
+}
+
+/* Common Header */
+.header {
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.header h1, .header h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-size: clamp(32px, 5vw, 48px);
+}
+
+.headerSub {
+    color: var(--color-secondary-text);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 12px;
+}
+
+/* Base Editorial Card Style */
+.editorialCard {
+    background: var(--color-surface-lowest);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    border: 1px solid var(--color-outline);
+}
+.editorialCard:hover {
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* Field Map Grid */
+.mapGrid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    aspect-ratio: 16/9;
+    min-height: 600px;
+}
+@media (max-width: 900px) {
+    .mapGrid {
+        display: flex;
+        flex-direction: column;
+        aspect-ratio: auto;
+    }
+}
+
+.leftCol {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.rightCol {
+    grid-column: span 9;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.boxFieldSecondary {
+    background: rgba(139, 0, 0, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(139, 0, 0, 0.1);
+}
+.boxFieldSecondary.flexOne { flex: 1; min-height: 100px; }
+.boxFieldSecondary.h24 { height: 96px; }
+
+.boxFieldSurface {
+    background: var(--color-surface);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+}
+.boxFieldSurface.h24 { height: 96px; }
+.boxFieldSurface.h48 { 
+    height: 192px; 
+    flex-direction: column; 
+    gap: 8px; 
+    padding: 8px; 
+    position: relative;
+    z-index: 1;
+}
+
+.boxFieldLowest {
+    position: relative;
+    z-index: 2;
+    height: 48px;
+    background: var(--color-surface-lowest);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+    margin: 0 auto;
+    box-shadow: var(--shadow-card);
+}
+
+.fieldInnerRow {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.fieldDivider {
+    position: absolute;
+    top: 56px; 
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    border-left: 2px dotted rgba(26, 28, 28, 0.2);
+    z-index: 0;
+}
+
+.boxFieldSecondaryLight {
+    flex: 1;
+    max-width: 45%;
+    background: rgba(139, 0, 0, 0.03);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(139, 0, 0, 0.1);
+}
+
+.cricketPitch {
+    height: 48px;
+    background: var(--color-surface);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.facilitiesRow {
+    height: 96px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.boxPrimary {
+    background: var(--color-primary);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    color: var(--color-on-primary);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.boxSurfaceHighest {
+    background: #d9d9d9;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: rgba(26,28,28,0.8);
+}
+
+/* Map Typography Tokens */
+.fieldTextSec { font-family: var(--font-display); font-weight: 700; color: var(--color-primary); font-size: 18px; }
+.fieldTextSec.large { font-size: 24px; }
+.fieldTextSecLight { font-family: var(--font-display); font-weight: 700; color: rgba(139, 0, 0, 0.7); font-size: 18px; }
+.fieldTextSurface { font-family: var(--font-display); font-weight: 700; color: rgba(26,28,28,0.6); font-size: 14px; text-align: center; }
+.fieldTextTiny { font-family: var(--font-display); font-weight: 700; color: rgba(26,28,28,0.6); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; }
+
+.facilIconGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.facilIconText { font-family: var(--font-display); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+.divider { width: 1px; height: 32px; background: rgba(255,255,255,0.2); }
+.facilCarText { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 14px; }
+
+
+/* Fixtures Module */
+.fixturesContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px;
+}
+.fixturesHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--color-secondary-text);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 12px;
+    margin-bottom: 32px;
+    justify-content: center;
+}
+.fixturesHeader .dotline { width: 32px; height: 1px; background: rgba(0,0,0,0.2); }
+.fixtureList {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.fixtureCard {
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-between;
+}
+@media (min-width: 768px) {
+    .fixtureCard {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+.fixLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.fixMeta {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(26,28,28,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+.fixTeams {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.fixTeamName {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-charcoal);
+    font-family: var(--font-display);
+}
+.fixVs {
+    color: rgba(26,28,28,0.2);
+    font-weight: 300;
+    font-style: italic;
+}
+.fixRight {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.fixLive {
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
+}
+.fixCat {
+    background: #e8e8e8;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(26,28,28,0.6);
+}
+.fixArr {
+    padding: 8px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.fixtureCard:hover .fixArr { opacity: 1; }
+
+
+/* Facilities Module */
+.facilContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px;
+}
+.facilGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+@media (min-width: 768px) {
+    .facilGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.facilCard {
+    flex-direction: column;
+    gap: 16px;
+}
+.facilIconBox {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(139, 0, 0, 0.05); /* primary slightly transparent approx */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+}
+.facilTitle {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-family: var(--font-display);
+    color: var(--color-charcoal);
+}
+.facilDesc {
+    font-size: 14px;
+    color: var(--color-secondary-text);
+    line-height: 1.6;
+}

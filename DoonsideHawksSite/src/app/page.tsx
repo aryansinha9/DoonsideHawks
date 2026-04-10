@@ -69,15 +69,18 @@ function AboutHistoryPreview() {
 }
 
 async function GalleryPreviewSection() {
-    const supabase = createClient()
-    const { data: galleryImages } = await supabase
-        .from('gallery_items')
-        .select('*')
-        .eq('type', 'image')
-        .order('created_at', { ascending: false })
-        .limit(3)
-
-    const imagesToDisplay = galleryImages || []
+    let imagesToDisplay: any[] = []
+    
+    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+        const supabase = createClient()
+        const { data: galleryImages } = await supabase
+            .from('gallery_items')
+            .select('*')
+            .eq('type', 'image')
+            .order('created_at', { ascending: false })
+            .limit(3)
+        imagesToDisplay = galleryImages || []
+    }
 
     return (
         <section className="section">
@@ -135,9 +138,13 @@ function SocialLinksSection() {
 }
 
 async function SponsorsSection() {
-    const supabase = createClient()
-    const { data: sponsorsData } = await supabase.from('home_sponsors').select('*').order('created_at', { ascending: true })
-    const dynamicSponsors = sponsorsData || []
+    let dynamicSponsors: any[] = []
+    
+    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+        const supabase = createClient()
+        const { data: sponsorsData } = await supabase.from('home_sponsors').select('*').order('created_at', { ascending: true })
+        dynamicSponsors = sponsorsData || []
+    }
 
     return (
         <section className="section section--fog">

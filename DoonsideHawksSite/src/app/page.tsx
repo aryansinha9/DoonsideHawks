@@ -4,6 +4,8 @@ import styles from './page.module.css'
 import { Facebook, Instagram, Youtube } from 'lucide-react'
 import { createClient } from '@/utils/supabase/server'
 
+export const dynamic = 'force-dynamic'
+
 export default async function HomePage() {
     return (
         <div className={styles.page}>

@@ -12,6 +12,7 @@
   --color-secondary-text: #5d5f5f;
   --color-outline: #dcc0be;
   --color-on-primary: #ffffff;
+  --color-white: #ffffff;
 
   /* Typography variables provided by layout.tsx from next/font/google */
   /* --font-display: Plus Jakarta Sans; --font-body: Manrope; */

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PageHero from '@/components/PageHero'
 import styles from './page.module.css'
 
 export const metadata = { title: 'Club History — Doonside Hawks Soccer Club' }
@@ -6,17 +7,10 @@ export const metadata = { title: 'Club History — Doonside Hawks Soccer Club' }
 export default function HistoryPage() {
     return (
         <div>
-            <section className={`hero hero-half ${styles.hero}`}>
-                <div className="hero-bg">
-                    <img src="https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?w=1600&q=80&auto=format&fit=crop" alt="Club History" />
-                </div>
-                <div className="hero-overlay" />
-                <div className="hero-content">
-                    <p className="breadcrumb"><Link href="/">Home</Link><span className="breadcrumb-sep">›</span><span>Club History</span></p>
-                    <h1 className={`display ${styles.heroTitle}`}>Our Story</h1>
-                    <p className={styles.heroSub}>Over four decades of football, family, and community.</p>
-                </div>
-            </section>
+            <PageHero
+                title="Our Story" subtitle="Over four decades of football, family, and community."
+                breadcrumbs={[{'label': 'Home', 'href': '/'}, {'label': 'Club History'}]}
+            />
 
             <section className="section">
                 <div className="container" style={{ maxWidth: 900 }}>

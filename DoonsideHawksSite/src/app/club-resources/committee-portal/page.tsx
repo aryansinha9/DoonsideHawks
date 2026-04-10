@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useTransition } from 'react'
+import PageHero from '@/components/PageHero'
 import Link from 'next/link'
 import { ChevronDown, Lock, Eye, EyeOff } from 'lucide-react'
 import { verifyPortalPassword } from './actions'
@@ -39,15 +40,10 @@ export default function CommitteePortalPage() {
 
     return (
         <div>
-            <section className={`hero hero-half ${styles.hero}`}>
-                <div className="hero-bg" style={{ background: 'var(--color-charcoal-deep)' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, rgba(80,0,0,0.4) 0%, rgba(10,10,10,0.9) 100%)', zIndex: 1 }} />
-                <div className="hero-content">
-                    <p className="breadcrumb"><Link href="/">Home</Link><span className="breadcrumb-sep">›</span><span>Committee Portal</span></p>
-                    <h1 className={`display ${styles.heroTitle}`}><Lock size={32} style={{ marginRight: 12, verticalAlign: 'middle' }} />Committee Portal</h1>
-                    <p className={styles.heroSub}>Internal access only.</p>
-                </div>
-            </section>
+            <PageHero
+                title="Committee Portal" subtitle="Internal access only."
+                breadcrumbs={[{'label': 'Home', 'href': '/'}, {'label': 'Committee Portal'}]}
+            />
 
             <section className="section">
                 <div className="container" style={{ maxWidth: 640 }}>

@@ -76,14 +76,18 @@ export default function Navbar() {
     return (
         <nav className={`${styles.nav} ${!isVisible ? styles.navHidden : ''}`}>
             <div className={styles.inner}>
-                {/* Logo */}
-                <Link href="/" className={styles.logo}>
-                    <img
-                        src="/silver-hawk.png"
-                        alt="Doonside Hawks Logo"
-                        className={styles.logoImage}
-                    />
-                </Link>
+                {/* Conditionally hide logo on admin pages */}
+                {!pathname?.startsWith('/admin') ? (
+                    <Link href="/" className={styles.logo}>
+                        <img
+                            src="/silver-hawk.png"
+                            alt="Doonside Hawks Logo"
+                            className={styles.logoImage}
+                        />
+                    </Link>
+                ) : (
+                    <div className={styles.logo} /> 
+                )}
 
                 <div className={styles.navContentRight}>
                     {/* Parallelogram Background */}

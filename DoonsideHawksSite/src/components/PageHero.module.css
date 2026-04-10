@@ -1,0 +1,40 @@
+.hero {
+    min-height: 280px;
+    position: relative;
+}
+
+.heroTitle {
+    font-size: clamp(36px, 5vw, 64px);
+    color: #ffffff; /* Explicitly set to white for legibility */
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.heroSub {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 8px;
+}
+
+.breadcrumb {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+}
+
+.breadcrumb a {
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+    color: var(--color-white);
+}
+
+.breadcrumbSep {
+    margin: 0 12px;
+    color: rgba(255, 255, 255, 0.4);
+}

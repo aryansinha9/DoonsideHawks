@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useTransition } from 'react'
+import PageHero from '@/components/PageHero'
 import Link from 'next/link'
 import { MapPin, Mail, Phone, Facebook, Instagram, Youtube, CheckCircle, AlertCircle } from 'lucide-react'
 import { sendContactEmail } from './actions'
@@ -52,21 +53,10 @@ export default function ContactPage() {
     return (
         <div>
             {/* Hero */}
-            <section className={`hero hero-half ${styles.hero}`}>
-                <div className="hero-bg">
-                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80&auto=format&fit=crop" alt="Contact" />
-                </div>
-                <div className="hero-overlay" />
-                <div className="hero-content">
-                    <p className="breadcrumb">
-                        <Link href="/">Home</Link>
-                        <span className="breadcrumb-sep">›</span>
-                        <span>Contact</span>
-                    </p>
-                    <h1 className={`display ${styles.heroTitle}`}>Get in Touch</h1>
-                    <p className={styles.heroSub}>We would love to hear from you.</p>
-                </div>
-            </section>
+            <PageHero
+                title="Get in Touch" subtitle="We would love to hear from you."
+                breadcrumbs={[{'label': 'Home', 'href': '/'}, {'label': 'Contact'}]}
+            />
 
             <section className="section">
                 <div className="container">

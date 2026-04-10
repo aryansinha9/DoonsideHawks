@@ -1,7 +1,6 @@
 import Link from 'next/link'
-import { MapPin, Clock, Calendar } from 'lucide-react'
-import { fixtures, formatDate } from '@/lib/fixturesData'
-import { grounds } from '@/lib/groundsData'
+import PageHero from '@/components/PageHero'
+import { MapPin } from 'lucide-react'
 import InteractiveGroundMap from '@/components/InteractiveGroundMap'
 import styles from './page.module.css'
 
@@ -14,24 +13,10 @@ export default function FixturesPage() {
     return (
         <div>
             {/* Hero */}
-            <section className={`hero hero-half ${styles.hero}`}>
-                <div className="hero-bg">
-                    <img
-                        src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1600&q=80&auto=format&fit=crop"
-                        alt="Football match action"
-                    />
-                </div>
-                <div className="hero-overlay" />
-                <div className="hero-content">
-                    <p className="breadcrumb">
-                        <Link href="/">Home</Link>
-                        <span className="breadcrumb-sep">›</span>
-                        <span>Fixtures</span>
-                    </p>
-                    <h1 className={`display ${styles.heroTitle}`}>Fixtures &amp; Grounds</h1>
-                    <p className={styles.heroSub}>Know Before You Go.</p>
-                </div>
-            </section>
+            <PageHero
+                title="Fixtures &amp; Grounds" subtitle="Know Before You Go."
+                breadcrumbs={[{'label': 'Home', 'href': '/'}, {'label': 'Fixtures'}]}
+            />
 
             {/* Fixtures */}
             <section className="section">
@@ -42,36 +27,12 @@ export default function FixturesPage() {
                         All fixtures are subject to change. Check back regularly or follow us on social media for updates.
                     </p>
 
-                    <div className={styles.fixtureTable}>
-                        <div className={styles.tableHead}>
-                            <span>Date &amp; Time</span>
-                            <span>Match</span>
-                            <span>Competition</span>
-                            <span>Venue</span>
-                            <span>H/A</span>
+                    <div style={{ padding: '64px 32px', backgroundColor: 'var(--color-surface-lowest)', borderRadius: 'var(--radius-card)', border: '1px solid var(--color-outline)', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '24px' }}>
+                        <span style={{ fontSize: '48px' }}>📅</span>
+                        <div>
+                            <h3 style={{ fontSize: 'var(--text-h3)', fontFamily: 'var(--font-display)', color: 'var(--color-primary)', marginBottom: '8px' }}>Official Fixtures System</h3>
+                            <p style={{ color: 'var(--color-secondary-text)', maxWidth: '400px' }}>To ensure you always have the most accurate, live, and up-to-date match times, venues, and status updates, Doonside Hawks uses the official Blacktown District Soccer Football Association (BDSFA) DRIBL system.</p>
                         </div>
-                        {fixtures.map((f) => (
-                            <div key={f.id} className={styles.tableRow}>
-                                <div className={styles.dateCell}>
-                                    <span className={styles.dateText}><Calendar size={12} /> {formatDate(f.date)}</span>
-                                    <span className={styles.timeText}><Clock size={11} /> {f.time}</span>
-                                </div>
-                                <div className={styles.matchCell}>
-                                    <span className={styles.teamName}>{f.homeTeam}</span>
-                                    <span className={styles.vsLabel}>vs</span>
-                                    <span className={styles.teamName}>{f.awayTeam}</span>
-                                </div>
-                                <div className={styles.compCell}>{f.competition}</div>
-                                <div className={styles.venueCell}>
-                                    <MapPin size={12} /> {f.venue}
-                                </div>
-                                <div className={styles.haCell}>
-                                    <span className={`${styles.badge} ${f.isHome ? styles.home : styles.away}`}>
-                                        {f.isHome ? 'HOME' : 'AWAY'}
-                                    </span>
-                                </div>
-                            </div>
-                        ))}
                     </div>
 
                     <div className={styles.actionButtons}>

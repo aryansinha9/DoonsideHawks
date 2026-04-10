@@ -130,7 +130,8 @@
 }
 
 .badge15 {
-    background: #1b6d24; /* Distinct green for 15 year player */
+    background: var(--color-primary-container); /* Removed green, using theme color */
+    color: var(--color-on-primary); /* Keeping text legible */
 }
 
 /* Legend */

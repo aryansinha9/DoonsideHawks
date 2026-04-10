@@ -79,10 +79,10 @@ const FieldMap = () => {
 
              <div className={styles.fieldInnerRow}>
                 <div className={styles.boxFieldSecondaryLight}>
-                  <span className={styles.fieldTextSecLight}>Field 4</span>
+                  <span className={styles.fieldTextSecLight} style={{ whiteSpace: 'nowrap' }}>Field 4</span>
                 </div>
                 <div className={styles.boxFieldSecondaryLight}>
-                  <span className={styles.fieldTextSecLight}>Field 5</span>
+                  <span className={styles.fieldTextSecLight} style={{ whiteSpace: 'nowrap' }}>Field 5</span>
                 </div>
              </div>
           </div>

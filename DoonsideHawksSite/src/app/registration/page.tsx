@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import PageHero from '@/components/PageHero'
 import Link from 'next/link'
 import { ChevronDown, CheckCircle, Users, Calendar, Shield, HelpCircle } from 'lucide-react'
 import styles from './page.module.css'
@@ -40,20 +41,10 @@ export default function RegistrationPage() {
     return (
         <div>
             {/* Hero */}
-            <section className={`hero ${styles.hero}`}>
-                <div className="hero-bg">
-                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1600&q=80&auto=format&fit=crop" alt="Football players celebrating" />
-                </div>
-                <div className={`hero-overlay ${styles.heroOverlay}`} />
-                <div className="hero-content">
-                    <span className={styles.heroPill}>2026 Season</span>
-                    <h1 className={`display ${styles.heroTitle}`}>Your 2026 Season Starts Here</h1>
-                    <p className={styles.heroSub}>Join over 400 players in the Hawks family for the 2026 season.</p>
-                    <a href="https://www.playfootball.com.au" target="_blank" rel="noopener noreferrer" className={`btn btn-pink ${styles.heroCTA}`}>
-                        Register on PlayFootball →
-                    </a>
-                </div>
-            </section>
+            <PageHero
+                title="Your 2026 Season Starts Here" subtitle="Join over 400 players in the Hawks family for the 2026 season."
+                breadcrumbs={[{'label': 'Home', 'href': '/'}, {'label': 'Your 2026 Season Starts Here'}]}
+            />
 
             {/* Steps */}
             <section className="section">

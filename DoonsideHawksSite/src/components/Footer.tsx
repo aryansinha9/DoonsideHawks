@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { Facebook, Instagram, Youtube, Mail, MapPin, Phone } from 'lucide-react'
 import styles from './Footer.module.css'
 
@@ -11,9 +14,17 @@ const quickLinks = [
     { label: 'Club History', href: '/club-information/history' },
     { label: 'Gallery', href: '/club-information/gallery' },
     { label: 'Contact Us', href: '/contact' },
+    { label: 'Admin Access', href: '/admin' },
 ]
 
 export default function Footer() {
+    const pathname = usePathname()
+
+    // Hide footer entirely on admin routes
+    if (pathname?.startsWith('/admin')) {
+        return null
+    }
+
     return (
         <footer className={styles.footer}>
             <div className={styles.body}>

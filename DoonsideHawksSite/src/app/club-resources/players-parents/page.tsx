@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import PageHero from '@/components/PageHero'
 import Link from 'next/link'
 import { ChevronDown, Mail } from 'lucide-react'
 import styles from './page.module.css'
@@ -20,17 +21,10 @@ export default function PlayersParentsPage() {
 
     return (
         <div>
-            <section className={`hero hero-half ${styles.hero}`}>
-                <div className="hero-bg">
-                    <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=1600&q=80&auto=format&fit=crop" alt="Kids playing football" />
-                </div>
-                <div className="hero-overlay" />
-                <div className="hero-content">
-                    <p className="breadcrumb"><Link href="/">Home</Link><span className="breadcrumb-sep">›</span><span>Players & Parents</span></p>
-                    <h1 className={`display ${styles.heroTitle}`}>Players & Parents</h1>
-                    <p className={styles.heroSub}>Everything your family needs to know about playing for the Hawks.</p>
-                </div>
-            </section>
+            <PageHero
+                title="Players & Parents" subtitle="Everything your family needs to know about playing for the Hawks."
+                breadcrumbs={[{'label': 'Home', 'href': '/'}, {'label': 'Players & Parents'}]}
+            />
 
             <section className="section">
                 <div className="container">

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PageHero from '@/components/PageHero'
 import styles from './page.module.css'
 
 export const metadata = { title: "Coach & Manager's Corner — Doonside Hawks Soccer Club" }
@@ -6,21 +7,10 @@ export const metadata = { title: "Coach & Manager's Corner — Doonside Hawks So
 export default function CoachManagerPage() {
     return (
         <div>
-            <section className={`hero hero-half ${styles.hero}`}>
-                <div className="hero-bg">
-                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1600&q=80&auto=format&fit=crop" alt="Football Coach" />
-                </div>
-                <div style={{ position: 'absolute', inset: 0, background: 'rgba(20,0,0,0.65)', zIndex: 1 }} />
-                <div className="hero-content">
-                    <p className="breadcrumb">
-                        <Link href="/">Home</Link>
-                        <span className="breadcrumb-sep">›</span>
-                        <span>Coach & Manager's Corner</span>
-                    </p>
-                    <h1 className={`display ${styles.heroTitle}`}>Coach & Manager's Corner</h1>
-                    <p className={styles.heroSub}>Resources and requirements for our dedicated volunteers.</p>
-                </div>
-            </section>
+            <PageHero
+                title="Coach & Manager's Corner" subtitle="Resources and requirements for our dedicated volunteers."
+                breadcrumbs={[{label: 'Home', href: '/'}, {label: "Coach & Manager's Corner"}]}
+            />
 
             <section className="section bg-surface">
                 <div className="container">
@@ -48,11 +38,11 @@ export default function CoachManagerPage() {
                         <div className={styles.resourceGrid}>
                             <div className={styles.resourceCard}>
                                 <h3 className={styles.resourceTitle}>Miniroos Grassroots Football Coaching Certificate</h3>
-                                <a href="#" className={`btn btn-primary ${styles.btnDownload}`}>Download PDF</a>
+                                <a href="/miniroos_grassroots_football_coaching_certificate_-_discovery_phase.pdf" download className={`btn btn-primary ${styles.btnDownload}`}>Download PDF</a>
                             </div>
                             <div className={styles.resourceCard}>
                                 <h3 className={styles.resourceTitle}>Doonside Hawks Soccer Club Coaches and Managers Booklet</h3>
-                                <a href="#" className={`btn btn-primary ${styles.btnDownload}`}>Download PDF</a>
+                                <a href="/doonside_coaches_booklet_v2.pdf" download className={`btn btn-primary ${styles.btnDownload}`}>Download PDF</a>
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PageHero from '@/components/PageHero'
 import { FileText, Download } from 'lucide-react'
 import styles from './page.module.css'
 
@@ -6,34 +7,23 @@ export const metadata = { title: 'Documents Library — Doonside Hawks Soccer Cl
 
 export default function DocumentsPage() {
     const documents = [
-        "COACH, MANAGER & SPECTATOR BEHAVIOUR",
-        "CODE of CONDUCT (Parents,Player,Officials and Members)",
-        "Images of Children (Australian Sports Commission)",
-        "Ground Official Documents",
-        "FootballNSW Social Media Policy",
-        "Insurance/ Injury Documents",
-        "DHSC By Laws",
-        "DHSC Regulations",
-        "DHSC Constitution"
+        { title: "COACH, MANAGER & SPECTATOR BEHAVIOUR", href: "/coach_and_spectator_behaviour.pdf" },
+        { title: "CODE of CONDUCT (Parents,Player,Officials and Members)", href: "/respect_program_summary.pdf" },
+        { title: "Images of Children (Australian Sports Commission)", href: "/images-of-children-asc-1__1_.pdf" },
+        { title: "Ground Official Documents", href: "/ground_official.pdf" },
+        { title: "FootballNSW Social Media Policy", href: "/fnsw_social_media_policy.pdf" },
+        { title: "Insurance/ Injury Documents", href: "/fnsw_personal_injury_claim_form_2014.pdf" },
+        { title: "DHSC By Laws", href: "/dhsc_objects_rules___by_laws_2009.pdf" },
+        { title: "DHSC Regulations", href: "/dhsc_regulations_2016.pdf" },
+        { title: "DHSC Constitution", href: "/dhsc_constitution_2016.pdf" }
     ]
 
     return (
         <div>
-            <section className={`hero hero-half ${styles.hero}`}>
-                <div className="hero-bg">
-                    <img src="https://images.unsplash.com/photo-1555848962-6e79363ec58f?w=1600&q=80&auto=format&fit=crop" alt="Documents and Paperwork" />
-                </div>
-                <div style={{ position: 'absolute', inset: 0, background: 'rgba(20,0,0,0.65)', zIndex: 1 }} />
-                <div className="hero-content">
-                    <p className="breadcrumb">
-                        <Link href="/">Home</Link>
-                        <span className="breadcrumb-sep">›</span>
-                        <span>Documents Library</span>
-                    </p>
-                    <h1 className={`display ${styles.heroTitle}`}>Documents Library</h1>
-                    <p className={styles.heroSub}>Official club policies, regulations, and guidelines.</p>
-                </div>
-            </section>
+            <PageHero
+                title="Documents Library" subtitle="Official club policies, regulations, and guidelines."
+                breadcrumbs={[{'label': 'Home', 'href': '/'}, {'label': 'Documents Library'}]}
+            />
 
             <section className="section bg-surface">
                 <div className="container" style={{maxWidth: '1200px'}}>
@@ -48,11 +38,11 @@ export default function DocumentsPage() {
 
                     <div className={styles.docGrid}>
                         {documents.map((doc, idx) => (
-                            <a href="#" key={idx} className={styles.docCard}>
+                            <a href={doc.href} download key={idx} className={styles.docCard}>
                                 <div className={styles.docIcon}>
                                     <FileText size={24} />
                                 </div>
-                                <h3 className={styles.docTitle}>{doc}</h3>
+                                <h3 className={styles.docTitle}>{doc.title}</h3>
                                 <div className={styles.docLink}>
                                     Download PDF <Download size={14} />
                                 </div>

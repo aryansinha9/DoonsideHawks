@@ -278,21 +278,15 @@
   margin-bottom: 40px;
 }
 .sponsorsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 24px;
 }
-@media (max-width: 1024px) {
-  .sponsorsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 600px) {
-  .sponsorsGrid {
-    grid-template-columns: 1fr;
-  }
-}
 .sponsorTile {
+  flex: 0 1 calc(33.333% - 16px);
+  min-width: 280px;
   height: 160px; /* h-40 */
   background: var(--color-surface-lowest);
   border-radius: var(--radius-card); /* 8px */

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PageHero from '@/components/PageHero'
 import { committeeMembers } from '@/lib/committeeData'
 import styles from './page.module.css'
 
@@ -10,17 +11,10 @@ export default function CommitteePage() {
 
     return (
         <div>
-            <section className={`hero hero-half ${styles.hero}`}>
-                <div className="hero-bg">
-                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80&auto=format&fit=crop" alt="Committee" />
-                </div>
-                <div className="hero-overlay" />
-                <div className="hero-content">
-                    <p className="breadcrumb"><Link href="/">Home</Link><span className="breadcrumb-sep">›</span><span>Committee Profiles</span></p>
-                    <h1 className={`display ${styles.heroTitle}`}>Meet Our Committee</h1>
-                    <p className={styles.heroSub}>The dedicated volunteers who make the Hawks run.</p>
-                </div>
-            </section>
+            <PageHero
+                title="Meet Our Committee" subtitle="The dedicated volunteers who make the Hawks run."
+                breadcrumbs={[{'label': 'Home', 'href': '/'}, {'label': 'Committee Profiles'}]}
+            />
 
             <section className="section">
                 <div className="container">

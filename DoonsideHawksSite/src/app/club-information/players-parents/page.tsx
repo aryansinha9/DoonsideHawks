@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PageHero from '@/components/PageHero'
 import styles from './page.module.css'
 
 export const metadata = { title: 'Players & Parents — Doonside Hawks Soccer Club' }
@@ -6,21 +7,10 @@ export const metadata = { title: 'Players & Parents — Doonside Hawks Soccer Cl
 export default function PlayersParentsPage() {
     return (
         <div>
-            <section className={`hero hero-half ${styles.hero}`}>
-                <div className="hero-bg">
-                    <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=1600&q=80&auto=format&fit=crop" alt="Youth Soccer Training" />
-                </div>
-                <div style={{ position: 'absolute', inset: 0, background: 'rgba(20,0,0,0.65)', zIndex: 1 }} />
-                <div className="hero-content">
-                    <p className="breadcrumb">
-                        <Link href="/">Home</Link>
-                        <span className="breadcrumb-sep">›</span>
-                        <span>Players & Parents</span>
-                    </p>
-                    <h1 className={`display ${styles.heroTitle}`}>Players & Parents</h1>
-                    <p className={styles.heroSub}>Club guidelines, requirements, and responsibilities.</p>
-                </div>
-            </section>
+            <PageHero
+                title="Players & Parents" subtitle="Club guidelines, requirements, and responsibilities."
+                breadcrumbs={[{'label': 'Home', 'href': '/'}, {'label': 'Players & Parents'}]}
+            />
 
             <section className="section bg-surface">
                 <div className="container">

@@ -1,21 +1,28 @@
 import Link from 'next/link'
-import { juniorGolden, juniorSilver, seniorGolden, seniorSilver } from '@/lib/goalsData'
+import PageHero from '@/components/PageHero'
+import { createClient } from '@/utils/supabase/server'
 import styles from './page.module.css'
 
 export const metadata = { title: 'Honourboard — Doonside Hawks Soccer Club' }
 
-export default function HonourboardPage() {
+export default async function HonourboardPage() {
+    const supabase = createClient()
+    
+    // Fetch data symmetrically to old structure
+    const { data: junior } = await supabase.from('honourboard_junior').select('*').order('year', { ascending: false })
+    const { data: senior } = await supabase.from('honourboard_senior').select('*').order('year', { ascending: false })
+
+    const juniorGolden = junior?.filter(x => x.type === 'Golden') || []
+    const juniorSilver = junior?.filter(x => x.type === 'Silver') || []
+    const seniorGolden = senior?.filter(x => x.type === 'Golden') || []
+    const seniorSilver = senior?.filter(x => x.type === 'Silver') || []
+
     return (
         <div>
-            <section className={`hero hero-half ${styles.hero}`}>
-                <div className="hero-bg" style={{ background: 'var(--color-charcoal-deep)' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, rgba(139,0,0,0.3) 0%, rgba(20,10,0,0.9) 100%)', zIndex: 1 }} />
-                <div className="hero-content">
-                    <p className="breadcrumb"><Link href="/">Home</Link><span className="breadcrumb-sep">›</span><span>Honourboard</span></p>
-                    <h1 className={`display ${styles.heroTitle}`}>Honourboard</h1>
-                    <p className={styles.heroSub}>Celebrating our champions.</p>
-                </div>
-            </section>
+            <PageHero
+                title="Honourboard" subtitle="Celebrating our champions."
+                breadcrumbs={[{'label': 'Home', 'href': '/'}, {'label': 'Honourboard'}]}
+            />
 
 
 

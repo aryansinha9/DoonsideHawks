@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PageHero from '@/components/PageHero'
 import { BookOpen, Calendar, MessageSquare, Users, FileText, ExternalLink } from 'lucide-react'
 import styles from './page.module.css'
 
@@ -47,17 +48,10 @@ const resources = [
 export default function CoachesCornerPage() {
     return (
         <div>
-            <section className={`hero hero-half ${styles.hero}`}>
-                <div className="hero-bg">
-                    <img src="https://images.unsplash.com/photo-1587329310686-91414b8e3cb7?w=1600&q=80&auto=format&fit=crop" alt="Coaching" />
-                </div>
-                <div className="hero-overlay" />
-                <div className="hero-content">
-                    <p className="breadcrumb"><Link href="/">Home</Link><span className="breadcrumb-sep">›</span><span>Coach & Manager&apos;s Corner</span></p>
-                    <h1 className={`display ${styles.heroTitle}`}>Coach & Manager&apos;s Corner</h1>
-                    <p className={styles.heroSub}>Everything you need to prepare, train, and lead your team.</p>
-                </div>
-            </section>
+            <PageHero
+                title="Coach & Manager&apos;s Corner" subtitle="Everything you need to prepare, train, and lead your team."
+                breadcrumbs={[{'label': 'Home', 'href': '/'}, {'label': 'Coach & Manager&apos;s Corner'}]}
+            />
             <section className="section">
                 <div className="container">
                     <span className="section-label">Resources Hub</span>

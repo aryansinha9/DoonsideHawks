@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PageHero from '@/components/PageHero'
 import { groundsDirectory } from '@/lib/groundsDirectoryData'
 import styles from './page.module.css'
 
@@ -8,17 +9,10 @@ export default function GroundDirectoryPage() {
     return (
         <div>
             {/* The standard top hero styling */}
-            <section className={`hero hero-half ${styles.hero}`}>
-                <div className="hero-bg">
-                    <img src="https://images.unsplash.com/photo-1544716912-32a514d7a85c?w=1600&q=80&auto=format&fit=crop" alt="Sports Grounds" />
-                </div>
-                <div style={{ position: 'absolute', inset: 0, background: 'rgba(20,0,0,0.65)', zIndex: 1 }} />
-                <div className="hero-content">
-                    <p className="breadcrumb"><Link href="/">Home</Link><span className="breadcrumb-sep">›</span><span>Ground Directory</span></p>
-                    <h1 className={`display ${styles.heroTitle}`}>Ground Directory</h1>
-                    <p className={styles.heroSub}>Find the exact locations for all our visiting and home fixtures.</p>
-                </div>
-            </section>
+            <PageHero
+                title="Ground Directory" subtitle="Find the exact locations for all our visiting and home fixtures."
+                breadcrumbs={[{'label': 'Home', 'href': '/'}, {'label': 'Ground Directory'}]}
+            />
 
             {/* Main Table Content */}
             <section className="section bg-warm-fog">

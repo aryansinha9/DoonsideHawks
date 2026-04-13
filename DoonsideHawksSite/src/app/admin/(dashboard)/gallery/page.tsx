@@ -50,13 +50,31 @@ export default function GalleryAdminPage() {
 
     setUploading(true)
     setUploadProgress({ current: 0, total: selectedFiles.length })
+
+    // Security: validate every file's MIME type and size before starting uploads
+    const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
+    const MAX_SIZE_MB = 10
+    for (const file of selectedFiles) {
+      if (!ALLOWED_TYPES.includes(file.type)) {
+        alert(`"${file.name}" is not an accepted image type. Only JPEG, PNG, WebP, and GIF are allowed.`)
+        setUploading(false)
+        setUploadProgress({ current: 0, total: 0 })
+        return
+      }
+      if (file.size > MAX_SIZE_MB * 1024 * 1024) {
+        alert(`"${file.name}" exceeds the ${MAX_SIZE_MB}MB maximum file size.`)
+        setUploading(false)
+        setUploadProgress({ current: 0, total: 0 })
+        return
+      }
+    }
     
     let successCount = 0
 
     try {
       for (const file of selectedFiles) {
         const fileExt = file.name.split('.').pop()
-        const fileName = `${Math.random()}.${fileExt}`
+        const fileName = `${crypto.randomUUID()}.${fileExt}`
         const filePath = `${fileName}`
 
         // Upload to Storage
@@ -100,10 +118,29 @@ export default function GalleryAdminPage() {
     e.preventDefault()
     if (!videoUrl) return
 
-    let embedUrl = videoUrl
-    // Transform standard youtube URL to embed URL if needed
-    if (videoUrl.includes('watch?v=')) {
-      embedUrl = videoUrl.replace('watch?v=', 'embed/')
+    // Security: validate and restrict to YouTube/YouTube-nocookie domains only.
+    // Also converts to youtube-nocookie.com embeds (privacy-preserving — no tracking
+    // cookies until the user clicks play).
+    let embedUrl: string
+    try {
+      const parsed = new URL(videoUrl)
+      const allowedHosts = ['www.youtube.com', 'youtube.com', 'www.youtube-nocookie.com']
+      if (!allowedHosts.includes(parsed.hostname)) {
+        alert('Only YouTube URLs are accepted (youtube.com or youtube-nocookie.com).')
+        return
+      }
+      if (parsed.searchParams.has('v')) {
+        // Standard watch URL — convert to privacy-friendly embed
+        embedUrl = `https://www.youtube-nocookie.com/embed/${parsed.searchParams.get('v')}`
+      } else if (parsed.pathname.startsWith('/embed/')) {
+        embedUrl = videoUrl // already an embed URL
+      } else {
+        alert('Could not parse the YouTube URL. Please use a standard watch URL (e.g. https://www.youtube.com/watch?v=...)')
+        return
+      }
+    } catch {
+      alert('Invalid URL format. Please enter a valid YouTube URL.')
+      return
     }
 
     const { error } = await supabase.from('gallery_items').insert([

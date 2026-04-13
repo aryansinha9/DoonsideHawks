@@ -9,10 +9,9 @@ export default async function AdminLayout({
 }) {
   const supabase = createClient()
 
-  // Protect internal /admin routes. If no active session, send back to login.
-  const { data: { session }, error } = await supabase.auth.getSession()
-
-  // Wait, Nextjs App Router with Supabase recommends using getUser() for route protection guarantees over getSession()
+  // Security: getUser() makes a network call to Supabase to verify the token
+  // server-side. getSession() only reads the local cookie and must NOT be used
+  // for access control as it can be spoofed.
   const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) {

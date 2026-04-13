@@ -2,6 +2,17 @@
 
 import { Resend } from 'resend'
 
+// Security: HTML-escape to prevent injection in the outbound email body.
+// Without this, a submitter could inject HTML/CSS into the email shown to admins.
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 interface ContactFormData {
     name: string
     email: string
@@ -25,6 +36,12 @@ export async function sendContactEmail(data: ContactFormData): Promise<ActionRes
     if (!data.message?.trim() || data.message.length < 10) {
         return { success: false, error: 'Message must be at least 10 characters.' }
     }
+
+    // Security: enforce upper-bound length limits to prevent oversized payloads
+    if (data.name.length > 100) return { success: false, error: 'Name must be under 100 characters.' }
+    if (data.email.length > 254) return { success: false, error: 'Email address is too long.' }
+    if (data.phone && data.phone.length > 20) return { success: false, error: 'Phone number is too long.' }
+    if (data.message.length > 5000) return { success: false, error: 'Message must be under 5,000 characters.' }
 
     const apiKey = process.env.RESEND_API_KEY
     const fromEmail = process.env.RESEND_FROM_EMAIL || 'noreply@doonsidehawks.com.au'
@@ -58,30 +75,30 @@ export async function sendContactEmail(data: ContactFormData): Promise<ActionRes
                         <table style="width: 100%; border-collapse: collapse;">
                             <tr>
                                 <td style="padding: 8px 0; font-weight: bold; color: #555; width: 120px; font-size: 14px;">Name</td>
-                                <td style="padding: 8px 0; color: #2C2C2C; font-size: 14px;">${data.name}</td>
+                                <td style="padding: 8px 0; color: #2C2C2C; font-size: 14px;">${escapeHtml(data.name)}</td>
                             </tr>
                             <tr>
                                 <td style="padding: 8px 0; font-weight: bold; color: #555; font-size: 14px;">Email</td>
-                                <td style="padding: 8px 0; color: #2C2C2C; font-size: 14px;"><a href="mailto:${data.email}" style="color: #6A1012;">${data.email}</a></td>
+                                <td style="padding: 8px 0; color: #2C2C2C; font-size: 14px;"><a href="mailto:${escapeHtml(data.email)}" style="color: #6A1012;">${escapeHtml(data.email)}</a></td>
                             </tr>
                             ${data.phone ? `
                             <tr>
                                 <td style="padding: 8px 0; font-weight: bold; color: #555; font-size: 14px;">Phone</td>
-                                <td style="padding: 8px 0; color: #2C2C2C; font-size: 14px;">${data.phone}</td>
+                                <td style="padding: 8px 0; color: #2C2C2C; font-size: 14px;">${escapeHtml(data.phone)}</td>
                             </tr>` : ''}
                             <tr>
                                 <td style="padding: 8px 0; font-weight: bold; color: #555; font-size: 14px;">Subject</td>
-                                <td style="padding: 8px 0; color: #2C2C2C; font-size: 14px;">${data.subject}</td>
+                                <td style="padding: 8px 0; color: #2C2C2C; font-size: 14px;">${escapeHtml(data.subject)}</td>
                             </tr>
                         </table>
                         <div style="margin-top: 16px; border-top: 1px solid #e0dbd3; padding-top: 16px;">
                             <p style="font-weight: bold; color: #555; font-size: 14px; margin: 0 0 8px;">Message</p>
-                            <p style="color: #2C2C2C; font-size: 15px; line-height: 1.6; white-space: pre-wrap; margin: 0;">${data.message}</p>
+                            <p style="color: #2C2C2C; font-size: 15px; line-height: 1.6; white-space: pre-wrap; margin: 0;">${escapeHtml(data.message)}</p>
                         </div>
                         <div style="margin-top: 24px; padding: 16px; background: #f0eeeb; border-radius: 6px;">
                             <p style="margin: 0; font-size: 12px; color: #888;">
                                 Sent via the Doonside Hawks Soccer Club website contact form.
-                                Reply directly to this email to respond to ${data.name}.
+                                Reply directly to this email to respond to ${escapeHtml(data.name)}.
                             </p>
                         </div>
                     </div>

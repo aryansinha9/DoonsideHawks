@@ -49,9 +49,22 @@ export default function SponsorsAdminPage() {
 
     setUploading(true)
     try {
+      // Security: validate MIME type and file size before upload
+      const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
+      const MAX_SIZE_MB = 5
+      if (!ALLOWED_TYPES.includes(fileToUpload.type)) {
+        alert('Only JPEG, PNG, WebP, or GIF images are accepted.')
+        setUploading(false)
+        return
+      }
+      if (fileToUpload.size > MAX_SIZE_MB * 1024 * 1024) {
+        alert(`Logo must be under ${MAX_SIZE_MB}MB.`)
+        setUploading(false)
+        return
+      }
       // 1. Upload Logo
       const fileExt = fileToUpload.name.split('.').pop()
-      const fileName = `${Math.random()}.${fileExt}`
+      const fileName = `${crypto.randomUUID()}.${fileExt}`
       const filePath = `${fileName}`
 
       const { error: uploadError } = await supabase.storage

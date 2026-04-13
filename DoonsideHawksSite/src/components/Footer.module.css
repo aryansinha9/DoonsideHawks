@@ -145,10 +145,25 @@
   letter-spacing: 0.05em;
 }
 
+/* Give each side span equal flex weight so the centre slot is truly centred */
+.copyrightInner > span {
+  flex: 1;
+}
+
+.copyrightInner > span:last-child {
+  text-align: right;
+}
+
 @media (max-width: 600px) {
   .copyrightInner {
     flex-direction: column;
     gap: 12px;
+    text-align: center;
+  }
+
+  /* Reset individual span alignment on mobile */
+  .copyrightInner > span,
+  .copyrightInner > span:last-child {
     text-align: center;
   }
 }

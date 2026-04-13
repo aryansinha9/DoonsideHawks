@@ -25,7 +25,7 @@ const nextConfig = {
     //       CSS modules). Tighten to nonce-based CSP post-launch if desired.
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       [
@@ -33,12 +33,16 @@ const nextConfig = {
         'https://*.supabase.co',
         'https://images.unsplash.com',
         'https://via.placeholder.com',
+        'https://*.facebook.com',
+        'https://*.fbcdn.net',
       ].join(' '),
-      "frame-src https://www.youtube.com https://www.youtube-nocookie.com",
+      "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.facebook.com",
       [
         "connect-src 'self'",
         'https://*.supabase.co',
         'wss://*.supabase.co',
+        'https://www.facebook.com',
+        'https://*.facebook.com',
       ].join(' '),
       "object-src 'none'",
       "base-uri 'self'",

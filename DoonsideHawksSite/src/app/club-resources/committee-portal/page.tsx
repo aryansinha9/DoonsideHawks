@@ -1,12 +1,7 @@
-'use client'
-
-import { useState, useTransition } from 'react'
 import PageHero from '@/components/PageHero'
-import Link from 'next/link'
-import { ChevronDown, Lock, Eye, EyeOff } from 'lucide-react'
-import { verifyPortalPassword } from './actions'
 import styles from './page.module.css'
-
+import { cookies } from 'next/headers'
+import CommitteeLoginForm from './CommitteeLoginForm'
 
 const resources = [
     { title: '2026 AGM Agenda', date: 'Feb 2026', type: 'Governance', href: '#' },
@@ -18,25 +13,8 @@ const resources = [
 ]
 
 export default function CommitteePortalPage() {
-    const [pw, setPw] = useState('')
-    const [show, setShow] = useState(false)
-    const [authenticated, setAuthenticated] = useState(false)
-    const [error, setError] = useState('')
-    const [isPending, startTransition] = useTransition()
-
-    const handleLogin = (e: React.FormEvent) => {
-        e.preventDefault()
-        setError('')
-        startTransition(async () => {
-            const result = await verifyPortalPassword(pw)
-            if (result.success) {
-                setAuthenticated(true)
-                setPw('') // clear password from state
-            } else {
-                setError(result.error || 'Incorrect password. Please try again.')
-            }
-        })
-    }
+    const cookieStore = cookies()
+    const isAuthenticated = cookieStore.get('committee_auth')?.value === 'true'
 
     return (
         <div>
@@ -47,41 +25,8 @@ export default function CommitteePortalPage() {
 
             <section className="section">
                 <div className="container" style={{ maxWidth: 640 }}>
-                    {!authenticated ? (
-                        <div className={styles.loginBox}>
-                            <div className={styles.loginIcon}><Lock size={36} /></div>
-                            <h2 className="section-heading">Committee Access</h2>
-                            <p className="section-intro" style={{ marginBottom: 'var(--space-5)' }}>This area is restricted to Doonside Hawks committee members. Please enter the committee password to continue.</p>
-                            <form onSubmit={handleLogin} className={styles.loginForm}>
-                                <div className="form-group">
-                                    <label className="form-label" htmlFor="portal-pw">Password</label>
-                                    <div className={styles.pwField}>
-                                        <input
-                                            id="portal-pw"
-                                            type={show ? 'text' : 'password'}
-                                            className="form-input"
-                                            value={pw}
-                                            onChange={e => setPw(e.target.value)}
-                                            placeholder="Enter committee password"
-                                            autoComplete="current-password"
-                                        />
-                                        <button type="button" className={styles.showPw} onClick={() => setShow(!show)} aria-label={show ? 'Hide password' : 'Show password'}>
-                                            {show ? <EyeOff size={16} /> : <Eye size={16} />}
-                                        </button>
-                                    </div>
-                                    {error && <span className="form-error">{error}</span>}
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary"
-                                    disabled={isPending || !pw.trim()}
-                                    style={{ width: '100%', justifyContent: 'center' }}
-                                >
-                                    {isPending ? 'Verifying…' : 'Access Portal →'}
-                                </button>
-                            </form>
-                            <p className={styles.contactNote}>Forgotten the password? Contact the <Link href="/contact" className={styles.contactLink}>Club Secretary</Link>.</p>
-                        </div>
+                    {!isAuthenticated ? (
+                        <CommitteeLoginForm />
                     ) : (
                         <div>
                             <div className={styles.welcomeBanner}>

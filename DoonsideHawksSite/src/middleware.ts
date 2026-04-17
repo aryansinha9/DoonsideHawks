@@ -37,8 +37,20 @@ export async function middleware(request: NextRequest) {
   )
 
   // Refresh the session — this is intentional and required by Supabase SSR.
-  // The result is not used here; the side-effect is the cookie refresh.
-  await supabase.auth.getUser()
+  // The side-effect is the cookie refresh.
+  const { data: { user } } = await supabase.auth.getUser()
+
+  // Deny by default for admin routes (A01 - Broken Access Control)
+  if (
+    request.nextUrl.pathname.startsWith('/admin') &&
+    !request.nextUrl.pathname.startsWith('/admin/login')
+  ) {
+    if (!user) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/admin/login'
+      return NextResponse.redirect(url)
+    }
+  }
 
   return response
 }

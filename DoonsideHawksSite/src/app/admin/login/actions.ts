@@ -36,13 +36,14 @@ export async function login(formData: FormData) {
     headersList.get('x-real-ip') ??
     'unknown'
 
+  const email = formData.get('email') as string
+
   if (!checkRateLimit(ip)) {
+    console.warn(`[SECURITY] Rate-limit blocked login attempt for IP: ${ip} targeting email: ${email}`)
     redirect('/admin/login?error=too_many_attempts')
   }
 
   const supabase = createClient()
-
-  const email = formData.get('email') as string
   const password = formData.get('password') as string
 
   const { error } = await supabase.auth.signInWithPassword({ email, password })
@@ -50,9 +51,11 @@ export async function login(formData: FormData) {
   if (error) {
     // Security: use a generic error code — not the raw Supabase message —
     // to prevent user enumeration and to avoid leaking detail into access logs.
+    console.warn(`[SECURITY] Failed admin login attempt for IP: ${ip} targeting email: ${email}`)
     redirect('/admin/login?error=invalid_credentials')
   }
 
+  console.log(`[SECURITY] Successful admin login for IP: ${ip} (email: ${email})`)
   revalidatePath('/admin', 'layout')
   redirect('/admin')
 }

@@ -43,10 +43,16 @@ function formatYoutubeUrl(url: string) {
     }
 
     if (embedId) {
-        return `https://www.youtube.com/embed/${embedId}`
+        return `https://www.youtube-nocookie.com/embed/${embedId}`
     }
 
-    return url
+    // A05 Migration: Instead of blindly returning the raw URL (which could be javascript:alert or an external phishing site),
+    // we explicitly fail-safe if the URL isn't a pre-formatted safe embed string.
+    if (url.startsWith('https://www.youtube.com/embed/') || url.startsWith('https://www.youtube-nocookie.com/embed/')) {
+        return url
+    }
+
+    return 'about:blank'
 }
 
 export default function GalleryClient({ items }: { items: GalleryItem[] }) {

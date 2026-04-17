@@ -9,7 +9,7 @@ import styles from './page.module.css'
 
 
 export default function ContactPage() {
-    const [form, setForm] = useState({ name: '', email: '', company: '', subject: '', message: '' })
+    const [form, setForm] = useState({ name: '', email: '', company: '', subject: '', message: '', honeypot: '' })
     const [errors, setErrors] = useState<Record<string, string>>({})
     const [submitted, setSubmitted] = useState(false)
     const [serverError, setServerError] = useState('')
@@ -76,6 +76,15 @@ export default function ContactPage() {
                                 </div>
                             ) : (
                                 <form onSubmit={handleSubmit} className={styles.form} noValidate>
+                                    <input
+                                        type="text"
+                                        name="honeypot"
+                                        style={{ display: 'none' }}
+                                        value={form.honeypot}
+                                        onChange={e => setForm({ ...form, honeypot: e.target.value })}
+                                        tabIndex={-1}
+                                        autoComplete="off"
+                                    />
                                     {/* Row 1: Name + Email */}
                                     <div className={styles.formGrid}>
                                         <div className={styles.formField}>

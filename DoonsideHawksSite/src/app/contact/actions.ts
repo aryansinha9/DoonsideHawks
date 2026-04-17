@@ -46,6 +46,7 @@ export async function sendContactEmail(data: ContactFormData): Promise<ActionRes
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
+                "User-Agent": "DoonsideHawksSite/1.0 (Next.js Node)",
             },
             body: JSON.stringify({
                 access_key: WEB3FORMS_ACCESS_KEY,
@@ -58,6 +59,12 @@ export async function sendContactEmail(data: ContactFormData): Promise<ActionRes
             }),
         });
         
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('[Contact Form] Web3Forms rejected the request. Status:', response.status, 'Body:', errorText);
+            return { success: false, error: 'Failed to communicate with the mail server. Please try again or email us directly.' }
+        }
+
         const result = await response.json();
         
         if (result.success) {
@@ -67,7 +74,7 @@ export async function sendContactEmail(data: ContactFormData): Promise<ActionRes
             return { success: false, error: 'Failed to send message. Please try again later.' }
         }
     } catch (err) {
-        console.error('[Contact Form] Failed to send email via Web3Forms:', err)
+        console.error('[Contact Form] Network or parsing crash failed to send email via Web3Forms:', err)
         return { success: false, error: 'Failed to send message. Please try again or email us directly.' }
     }
 }

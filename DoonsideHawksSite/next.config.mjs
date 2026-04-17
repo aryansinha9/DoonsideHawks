@@ -36,7 +36,7 @@ const nextConfig = {
         'https://*.facebook.com',
         'https://*.fbcdn.net',
       ].join(' '),
-      "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.facebook.com",
+      "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.facebook.com https://www.google.com",
       [
         "connect-src 'self'",
         'https://*.supabase.co',

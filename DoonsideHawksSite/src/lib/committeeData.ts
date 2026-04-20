@@ -26,7 +26,7 @@ export const committeeMembers: CommitteeMember[] = [
     },
     {
         id: '3',
-        name: "Jackie Tate",
+        name: "Jacki Tate",
         role: "Secretary",
         email: "secretary@doonsidehawks.com.au",
         featured: true,

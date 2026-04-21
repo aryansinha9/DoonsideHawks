@@ -155,7 +155,8 @@
 }
 
 .socialProof {
-    background: var(--color-charcoal-deep);
+    background: var(--color-primary);
+    color: var(--color-on-primary);
 }
 
 .proofGrid {
@@ -177,7 +178,7 @@
     font-family: var(--font-display);
     font-weight: 900;
     font-size: clamp(36px, 4vw, 52px);
-    color: var(--color-magenta);
+    color: var(--color-on-primary);
     line-height: 1;
 }
 
@@ -190,7 +191,55 @@
 }
 
 .bottomCTA {
-    background: var(--color-crimson);
+    background: var(--color-primary-container);
+}
+
+.ctaBtnPrimary {
+    background: var(--color-on-primary);
+    color: var(--color-primary);
+    border-color: var(--color-on-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 16px 32px;
+    border-radius: var(--radius-btn);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all var(--transition-base);
+}
+
+.ctaBtnPrimary:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+}
+
+.ctaBtnGhost {
+    background: transparent;
+    color: var(--color-on-primary);
+    border-color: rgba(255, 255, 255, 0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 16px 32px;
+    border-radius: var(--radius-btn);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all var(--transition-base);
+    border-style: solid;
+    border-width: 1px;
+}
+
+.ctaBtnGhost:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-on-primary);
+    transform: translateY(-2px);
 }
 
 .letterBlock {

@@ -180,15 +180,15 @@ export default function RegistrationPage() {
             {/* Bottom CTA */}
             <section className={`section ${styles.bottomCTA}`}>
                 <div className="container" style={{ textAlign: 'center' }}>
-                    <h2 className={`section-heading section-heading--white`}>Ready to Join the Hawks?</h2>
+                    <h2 className="section-heading" style={{ color: 'var(--color-on-primary)' }}>Ready to Join the Hawks?</h2>
                     <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: 'var(--space-5)', fontSize: 18 }}>
                         Register now and become part of Western Sydney&apos;s most passionate football community.
                     </p>
                     <div style={{ display: 'flex', gap: 'var(--space-3)', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <a href="https://www.playfootball.com.au" target="_blank" rel="noopener noreferrer" className="btn btn-pink">
+                        <a href="https://www.playfootball.com.au" target="_blank" rel="noopener noreferrer" className={styles.ctaBtnPrimary}>
                             Register Now →
                         </a>
-                        <Link href="/contact" className="btn btn-ghost">Have a Question?</Link>
+                        <Link href="/contact" className={styles.ctaBtnGhost}>Have a Question?</Link>
                     </div>
                 </div>
             </section>

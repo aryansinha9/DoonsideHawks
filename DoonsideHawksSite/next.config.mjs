@@ -47,6 +47,7 @@ const nextConfig = {
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
+      "frame-ancestors 'self' https://www.anantasystems.com.au/",
       "upgrade-insecure-requests",
     ].join('; ')
 
@@ -57,8 +58,7 @@ const nextConfig = {
           // Security: added CSP and HSTS (were absent before this audit)
           { key: 'Content-Security-Policy', value: csp },
           { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
-          // Pre-existing headers
-          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          // Pre-existing headers (X-Frame-Options removed in favor of CSP frame-ancestors)
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
